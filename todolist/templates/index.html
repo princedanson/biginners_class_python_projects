@@ -1,0 +1,45 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/todolist.css' %}">
+</head>
+<body>
+
+    <div class="form-container">
+        <div class="form-box1">
+          <form action="" method="post">
+            {% csrf_token %}
+            {{ form }}
+            <input type="submit" value="Submit">
+          </form>  
+        </div>
+
+        <div class="form-box2">
+            <div class="task_block">
+              <form action="/todolist/DeleteTask" method="get">
+                <table>
+                  <tr>
+                      <th>Tasks</th>
+                      <th>Check</th>
+                  </tr>
+                  {% for item in tasks %}
+                  <tr>
+                      <td>{{ item.task }}</td>
+                      <td><input type="checkbox" name="tasks" value="{{ item.id }}" id="task_{{ item.id }}"></td>
+                  </tr>
+                  {% endfor %}
+                  <tr>
+                      <td colspan="2"><input type="submit" value="Delete Task"></td>
+                  </tr>
+                </table>
+              </form>
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>

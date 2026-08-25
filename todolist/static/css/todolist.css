@@ -1,0 +1,218 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    box-sizing: border-box;
+    min-height: 100vh;
+}
+
+.form-container{
+    width: 100%;
+    max-width: 900px;
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-start;
+    max-height: calc(100vh - 2rem);
+    box-sizing: border-box;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+}
+
+.form-box1{
+    flex: 0 0 320px;
+    max-width: 40%;
+    width: 100%;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 2rem;
+    box-sizing: border-box;
+    color: white;
+    display: flex;
+    align-items: center;
+}
+
+.form-box1 form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+}
+
+.form-box1 label {
+    font-weight: 500;
+    margin-bottom: 0.3rem;
+    display: block;
+    font-size: 0.95rem;
+}
+
+.form-box1 input[type="text"],
+.form-box1 textarea {
+    padding: 0.8rem;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    background: rgba(255, 255, 255, 0.95);
+    font-family: inherit;
+    transition: all 0.3s ease;
+}
+
+.form-box1 input[type="text"]:focus,
+.form-box1 textarea:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.2);
+}
+
+.form-box1 input[type="submit"] {
+    padding: 0.9rem 1.5rem;
+    background: #fff;
+    color: #667eea;
+    border: none;
+    border-radius: 6px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+    margin-top: 0.5rem;
+}
+
+.form-box1 input[type="submit"]:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.form-box1 input[type="submit"]:active {
+    transform: translateY(0);
+}
+
+.form-box2{
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 2rem;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* task list: fixed max height and vertical scroll */
+.task_block{
+    width: 100%;
+    max-width: 600px;
+    max-height: calc(100vh - 240px);
+    overflow-y: auto;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+    box-sizing: border-box;
+    border-radius: 8px;
+    background: #f8f9fa;
+    padding: 0;
+    border: 1px solid #e0e0e0;
+}
+
+/* keep table columns stable so rows wrap instead of forcing height growth */
+.task_block table{
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+}
+
+.task_block thead {
+    position: sticky;
+    top: 0;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    z-index: 2;
+}
+
+.task_block th {
+    padding: 1rem;
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.task_block tbody tr {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+    border-bottom: 1px solid #e0e0e0;
+    transition: background 0.2s ease;
+}
+
+.task_block tbody tr:nth-child(even) {
+   background-color: #a0b0c0;
+}
+
+.task_block tbody tr:hover {
+    background: #f0f0f0;
+}
+
+.task_block td {
+    padding: 1rem;
+    word-break: break-word;
+    color: #333;
+    font-size: 0.95rem;
+}
+
+.task_block input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    accent-color: #667eea;
+}
+
+.task_block input[type="submit"] {
+    padding: 0.9rem 1.5rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: calc(100% - 2rem);
+    margin: 1rem;
+    font-size: 1rem;
+}
+
+.task_block input[type="submit"]:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+}
+
+.task_block input[type="submit"]:active {
+    transform: translateY(0);
+}
+
+/* keep existing small style */
+td::first-letter{
+    text-transform: uppercase;
+}
+
+/* responsive stack */
+@media (max-width: 700px) {
+    .form-container { 
+        flex-direction: column; 
+        max-height: none;
+    }
+    .form-box1, .form-box2 { 
+        width: 100%;
+        max-width: 100%;
+    }
+    .form-box1 { 
+        flex: none;
+    }
+    .task_block {
+        max-height: 50vh;
+    }
+}
