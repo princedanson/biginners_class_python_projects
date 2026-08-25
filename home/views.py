@@ -10,7 +10,7 @@ def home(request):
     template = loader.get_template("myfirst.html")
     name_list=[]
     try:
-        file_path = r"C:\Users\Princ\OneDrive\Documents\Projects\python\class\baby2008_46b42cfd9bdffb09354e577e66a1f98a.html"
+        file_path = r"assessment\static\baby2008_46b42cfd9bdffb09354e577e66a1f98a.html"
     
         with open(file_path, "r+") as f:
             content = f.read()
